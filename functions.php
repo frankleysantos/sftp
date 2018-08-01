@@ -138,6 +138,14 @@ function buscasenha($cpf, $email){
         $sql2 ->bindValue(":senha", $senha);
         $sql2 ->execute(); 
         echo $senha;
+         $mail= $email;
+         $subject="Vaga do Processo Seletivo atualizada";
+         $body = "<h3>Prezado!</h3>
+         <p>Foi realizada a atualização da sua senha para:</p>
+         <p>".echo $senha."</p>
+         <p>Atenciosamente - CPD - PMTO</p>";
+         sendMail($mail,$subject,$body);
+        header("Location: index.php");
     }
 
 }

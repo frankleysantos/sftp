@@ -102,6 +102,7 @@ function inserirpessoa($nome, $mae, $pai, $cpf, $rg, $data_nasc, $sexo, $email, 
     $sql        -> bindValue(":uf",         $uf);
     $sql        -> bindValue(":senha",      $senha);   
     $sql->execute();
+    header("Location: login.php?msn=Cadastro Realizado!");
 }
 
 function geraSenha($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos = false)
@@ -147,4 +148,27 @@ function buscasenha($cpf, $email){
         header("Location: index.php");
     }
 
+}
+
+
+function updatepessoa($id, $nome, $mae, $pai, $rg, $data_nasc, $sexo, $email, $rua, $numero, $complemento, $bairro, $cidade, $uf){
+    include "config.php";
+    $sql = $pdo->prepare("UPDATE pessoa SET nome = :nome, mae = :mae, pai = :pai, rg = :rg, datanasc = :datanasc, sexo = :sexo, email = :email, rua = :rua, numero = :numero, complemento = :complemento,
+    bairro = :bairro, cidade = :cidade, uf = :uf WHERE id = :id");
+    $sql        -> bindValue(":id",       $id);
+    $sql        -> bindValue(":nome",       $nome);
+    $sql        -> bindValue(":mae",        $mae); 
+    $sql        -> bindValue(":pai",        $pai); 
+    $sql        -> bindValue(":rg",         $rg);
+    $sql        -> bindValue(":datanasc",   $data_nasc);
+    $sql        -> bindValue(":sexo",       $sexo); 
+    $sql        -> bindValue(":email",      $email); 
+    $sql        -> bindValue(":rua",        $rua);
+    $sql        -> bindValue(":numero",     $numero);
+    $sql        -> bindValue(":complemento",$complemento);   
+    $sql        -> bindValue(":bairro",     $bairro);
+    $sql        -> bindValue(":cidade",     $cidade);
+    $sql        -> bindValue(":uf",         $uf);   
+    $sql->execute();
+    header("Location: index.php");
 }

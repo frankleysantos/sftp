@@ -23,7 +23,7 @@
            if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
           ?>
 					<li><a href="listar_excel.php"><i class="fa fa-file-excel-o"></i>&ensp;Excel</a></li>
-          <li><a href="listar_busca.php?cod_ver=0&msn=0"><i class="fa fa-list"></i>&ensp;Listar Cadastrados</a></li>
+          <li><a href="formulario_alterar_pessoa.php"><i class="fa fa-list"></i>&ensp;Alterar</a></li>
           <?php }?>
 				</ul>
         </div>

@@ -27,6 +27,12 @@ if (isset($_POST['cpf']) && !empty($_POST['cpf'])) {
 	}
 }
 ?>
+<?php
+if (isset($_GET['msn']) && !empty($_GET['msn'])) {
+$msn = $_GET['msn'];
+echo "<label class='btn btn-success form-control'>".$msn."</label>";
+}
+?>
 <form method="POST">
 	<legend>Processo Seletivo</legend>
 
@@ -43,11 +49,11 @@ if (isset($_POST['cpf']) && !empty($_POST['cpf'])) {
 </form>
 
 
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-         <div class="panel panel-default">
+        <div class="panel-group row" id="accordion" role="tablist" aria-multiselectable="true">
+         <div class="panel-default col-md-6 btn-primary">
           <div class="panel-heading" role="tab" id="headingOne">
            <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Clique aqui se ainda não tiver Login</a>
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Cadastre seu Login</a>
            </h4>
           </div>
           <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -66,10 +72,10 @@ if (isset($_POST['cpf']) && !empty($_POST['cpf'])) {
           </div>
          </div>
 
-         <div class="panel panel-default">
+         <div class="panel-default col-md-6 btn-danger">
           <div class="panel-heading" role="tab" id="headingTwo">
            <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Esqueci a senha</a>
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Esqueceu a senha?</a>
            </h4>
           </div>
           <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">

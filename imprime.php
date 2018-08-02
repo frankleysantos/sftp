@@ -35,7 +35,7 @@
   </div>
   <div class="hidden-print container">
    <p>
-    <a href="/sftp" class="btn btn-info">Alterar Cargo</a>
+    <a href="/" class="btn btn-info">Alterar Cargo</a>
     <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>
     <span class="pull-right"><a href="sair.php" class="btn btn-danger">Sair</a></span>
    </p>

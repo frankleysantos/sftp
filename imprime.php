@@ -1,4 +1,7 @@
-<?php session_start();?><!DOCTYPE html>
+<?php session_start();
+if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
+
+?><!DOCTYPE html>
 <html lang="pt-br">
  <head>
   <meta charset="utf-8">
@@ -56,3 +59,8 @@
   <script src="../resources/js/bootstrap.js"></script>
  </body>
 </html>
+<?php
+}else{
+  header("Location: login.php");
+}
+?>

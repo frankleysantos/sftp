@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Téo Nota - 10</title>
+	<title>PSS - 2018</title>
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
@@ -22,8 +22,7 @@
           <?php
            if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
           ?>
-					<li><a href="listar_excel.php"><i class="fa fa-file-excel-o"></i>&ensp;Excel</a></li>
-          <li><a href="formulario_alterar_pessoa.php"><i class="fa fa-list"></i>&ensp;Alterar</a></li>
+          <li><a href="formulario_alterar_pessoa.php"><i class="fa fa-list"></i>&ensp;Alterar Informações</a></li>
           <?php }?>
 				</ul>
         </div>
@@ -46,8 +45,17 @@
      <div class="row">
        <div class="col-md-12" align="right">
          <?php
+         include "config.php";
           if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
-            echo "<label class='btn btn-default'>Usuário:&ensp;".$_SESSION['id']."</label>";
+            $id = $_SESSION['id'];
+            $sql = $pdo->prepare("SELECT substring_index(nome, ' ', 1) as primeironome FROM pessoa WHERE id = :id");
+            $sql ->bindValue(":id", $id);
+            $sql ->execute();
+            if ($sql->rowCount() > 0) {
+              foreach ($sql as $pessoa) {
+                echo "<label class='btn btn-default'>Bem Vindo:&ensp;".$pessoa['primeironome']."</label>";
+              }
+            }
           }
          ?>
        </div>

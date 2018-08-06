@@ -17,7 +17,7 @@
 				<a class="navbar-brand fa fa-check" href="index.php?msn=0">PSS</a>
 			</div>
 			<div class="row">
-      <div class="col-md-8">
+      <div class="col-md-4">
 				<ul class="nav navbar-nav">
           <?php
            if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
@@ -25,8 +25,15 @@
           <li><a href="formulario_alterar_pessoa.php"><i class="fa fa-list"></i>&ensp;Alterar Informações</a></li>
           <?php }?>
 				</ul>
-        </div>
-        <div class="col-md-2" align="right">
+        <ul class="nav navbar-nav">
+          <?php
+           if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
+          ?>
+          <li><a href="senha.php"><i class="fa fa-list"></i>&ensp;Alterar Senha</a></li>
+          <?php }?>
+        </ul>
+      </div>
+      <div class="col-md-2" align="right">
           <ul class="nav navbar-nav">
             <li><?php 
            if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
@@ -34,7 +41,7 @@
            }
           ?></li>
           </ul>
-        </div>
+      </div>
 			</div>
 		</div>
 	</div>

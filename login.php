@@ -1,5 +1,4 @@
 <?php
-
 require "cabecalho.php";
 require "config.php";
 session_start();

@@ -22,7 +22,7 @@
           <?php
            if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
           ?>
-          <li><a href="formulario_alterar_pessoa.php"><i class="fa fa-list"></i>&ensp;Alterar Informações</a></li>
+          <li><a href="formulario_alterar_pessoa.php"><i class="fa fa-list"></i>&ensp;Alterar Dados Pessoais</a></li>
           <?php }?>
 				</ul>
         <ul class="nav navbar-nav">

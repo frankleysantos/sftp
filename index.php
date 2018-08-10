@@ -14,8 +14,8 @@ if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 		foreach ($sql as $cargo) {
 			?>
 			<form action="update_cargo.php" method="POST" role="form">
-				<legend>Atualize o cargo que deseja</legend>
-				<legend>Só possível cadastrar em uma vaga para todos os editais.</legend>				
+				<legend>Atualize para o cargo que deseja participar.</legend>
+				<legend><u>Só é possível cadastrar em um cargo para todos os editais.</u></legend>				
 			      <p><input type='radio' name='vaga' value='Auxiliar Administrativo - Edital I'<?php if($cargo['vaga'] == 'Auxiliar Administrativo - Edital I') echo 'checked';?>>Auxiliar Administrativo - Edital I</p>
 			      <p><input type='radio' name='vaga' value='Motorista 1 - Edital I'<?php if($cargo['vaga'] == 'Motorista 1 - Edital I') echo 'checked';?>>Motorista 1 - Edital I</p>
 			      <p><input type='radio' name='vaga' value='Motorista 2 - Edital I'<?php if($cargo['vaga'] == 'Motorista 2 - Edital I') echo 'checked';?>>Motorista 2 - Edital I</p>
@@ -33,8 +33,8 @@ if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 ?>
 
 <form action="insc_cargos.php" method="POST" role="form">
-	<legend>Cadastre na Vaga desejada</legend>
-	<legend>Só possível cadastrar em uma vaga para todos os editais.</legend>
+	<legend>Cadastre na vaga desejada.</legend>
+	<legend><u>Só é possível cadastrar em uma vaga para todos os editais.</u></legend>
 
 	<div class="form-group">
 		<label class="fa fa-list">&ensp;Vagas</label>

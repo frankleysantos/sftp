@@ -33,18 +33,18 @@ echo "<label class='btn btn-success form-control'>".$msn."</label>";
 }
 ?>
 <form method="POST">
-	<legend>Processo Seletivo</legend>
+	<legend>Processo Seletivo Simplificado 2018 - Secretaria Municipal de Assistência Social e Habitação</legend>
 
 	<div class="form-group">
 		<label class="fa fa-user">&ensp;CPF</label>
-		<input type="text" class="form-control" name="cpf" placeholder="Digite o seu CPF" maxlength="11" minlength="11" onblur="return verificarCPF(this.value)">
+		<input type="text" class="form-control" name="cpf" placeholder="Digite o seu CPF" maxlength="11" minlength="11" onblur="return verificarCPF(this.value)" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 	</div>
 	<div class="form-group">
 		<label class="fa fa-unlock">&ensp;Senha</label>
 		<input type="password" class="form-control" name="senha" placeholder="Digite sua Senha">
 	</div>
 
-	<button type="submit" class="btn btn-primary fa fa-sign-in">&ensp;Logar</button>
+	<button type="submit" class="btn btn-primary fa fa-sign-in">&ensp;Entrar</button>
 </form>
 
 
@@ -52,7 +52,7 @@ echo "<label class='btn btn-success form-control'>".$msn."</label>";
          <div class="panel-default col-md-6 btn-primary">
           <div class="panel-heading" role="tab" id="headingOne">
            <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Cadastre seu Login</a>
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Cadastre seu Login!</a>
            </h4>
           </div>
           <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -62,7 +62,7 @@ echo "<label class='btn btn-success form-control'>".$msn."</label>";
               <label class="sr-only" for="CPF">CPF</label>
               <div class="input-group">
                <div class="input-group-addon">CPF</div>
-               <input type="text" class="form-control" id="cpf" name="CPF" placeholder="00000000000" minlength="11" maxlength="11" onblur="return verificarCPF(this.value)"/>
+               <input type="text" class="form-control" id="cpf" name="CPF" placeholder="00000000000" minlength="11" maxlength="11" onblur="return verificarCPF(this.value)" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
               </div>
              </div>
              <button type="submit" class="btn btn-primary">Enviar</button>
@@ -84,11 +84,11 @@ echo "<label class='btn btn-success form-control'>".$msn."</label>";
               <label class="sr-only" for="CPF">CPF</label>
               <div class="input-group">
                <div class="input-group-addon">CPF</div>
-               <input type="text" class="form-control" id="cpf" name="cpf" placeholder="00000000000" minlength="11" maxlength="11" onblur="return verificarCPF(this.value)"/>
+               <input type="text" class="form-control" id="cpf" name="cpf" placeholder="00000000000" minlength="11" maxlength="11" onblur="return verificarCPF(this.value)" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required/>
               </div>
               <div class="input-group">
                <div class="input-group-addon">Email</div>
-               <input type="email" class="form-control" id="cpf" name="email" placeholder="mail@gmail.com"/>
+               <input type="email" class="form-control" id="cpf" name="email" placeholder="mail@gmail.com" required/>
               </div>
              </div>
              <button type="submit" class="btn btn-primary">Enviar</button>
@@ -97,6 +97,10 @@ echo "<label class='btn btn-success form-control'>".$msn."</label>";
           </div>
          </div>
         </div>
+        <legend>Editais</legend>
+        <p><a href="editais/Edital1.pdf" target="_blank" class="form-control btn-default"><b>1 - Edital I</b></a></p>
+        <p><a href="editais/Edital2.pdf" target="_blank" class="form-control btn-default"><b>2 - Edital II</b></a></p>
+        <p><b><u>Obs: Somente é possivel cadastrar em uma vaga para todos os editais.</u></b></p>
 
 <?php
 require "rodape.php";

@@ -15,15 +15,16 @@ if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
      } 
 ?>
 <form action="" method="POST" role="form">
-	<legend>Alterando Senha</legend>
+	<legend><b>Redefinir senha</b></legend>
+    <p>Realize a troca da sua senha.</p>
 
 	<div class="form-group">
-		<label for="">Senha Nova</label>
-		<input type="password" class="form-control" id="senha" placeholder="Senha Nova" name="senha">
-		<label for="">Confirme a senha</label>
-		<input type="password" id="Confirmar" class="form-control" name="Confirmar" onblur="return validasenha(this.value)" placeholder="Confirmar senha.">
+		<label for="">Nova Senha</label>
+		<input type="password" class="form-control" id="senha" placeholder="Digite a nova senha..." name="senha">
+		<label for="">Repita a nova senha</label>
+		<input type="password" id="Confirmar" class="form-control" name="Confirmar" onblur="return validasenha(this.value)" placeholder="Repita a nova senha..." required>
 	</div>
-	<button type="submit" class="btn btn-primary">Alterar</button>
+	<button type="submit" class="btn btn-success">Redefinir Senha</button>
 </form>
 
 <?php 

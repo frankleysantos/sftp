@@ -3,10 +3,11 @@ session_start();
 
 function inscricao($vaga, $id){
     require "config.php";
-    $sql = $pdo->prepare("INSERT INTO cargos (vaga, id_pessoa) VALUES(:vaga, :id_pessoa)");
+    $sql = $pdo->prepare("INSERT INTO cargos (vaga, id_pessoa, insercaovaga) VALUES(:vaga, :id_pessoa, now())");
     $sql->bindValue(":vaga", $vaga);
     $sql->bindValue(":id_pessoa", $id);
     $sql->execute();
+    $id_cargo = $pdo->lastInsertId();
     $sql2 = $pdo->prepare("SELECT * FROM pessoa WHERE id = :id");
     $sql2 ->bindValue(":id", $id);
     $sql2->execute();
@@ -20,16 +21,20 @@ function inscricao($vaga, $id){
          $mail= $_SESSION['email'];
          $subject="Cadastro no Processo Seletivo Realizado";
          $body = "<h3>Prezado&ensp;".$_SESSION['nome']."!</h3>
-         <p>Foi realizada o cadastro no processo seletivo  para o cargo de:</p>
+         <p>Foi realizado o seu cadastro no processo seletivo para o cargo de:</p>
          <p>".$_SESSION['vaga']."</p>
-         <p>Atenciosamente - CPD - PMTO</p>";
+         <p>Gentileza não responder a esse email.</p>
+         <p>Processo Seletivo 2018.</p>";
          sendMail($mail,$subject,$body);
          header("Location: imprime.php");
-     } 
+     }
+     
+     $id_pessoa = $id;
+     atendimento($id_cargo, $id_pessoa); 
 }
 function update_cargo($vaga, $id){
     require "config.php";
-    $sql  = $pdo->prepare("UPDATE cargos SET vaga = :vaga WHERE id_pessoa = :id_pessoa");
+    $sql  = $pdo->prepare("UPDATE cargos SET vaga = :vaga, atualizacaovaga = now() WHERE id_pessoa = :id_pessoa");
     $sql  ->bindValue(":vaga", $vaga);
     $sql  -> bindValue(":id_pessoa", $id);
     $sql  ->execute();
@@ -48,7 +53,8 @@ function update_cargo($vaga, $id){
          $body = "<h3>Prezado&ensp;".$_SESSION['nome']."!</h3>
          <p>Foi realizada a atualização do cargo para:</p>
          <p>".$_SESSION['vaga']."</p>
-         <p>Atenciosamente - CPD - PMTO</p>";
+         <p>Gentileza não responder a esse email.</p>
+         <p>Processo Seletivo 2018.</p>";
          sendMail($mail,$subject,$body);
          header("Location: imprime.php");
      } 
@@ -56,7 +62,7 @@ function update_cargo($vaga, $id){
 
 function sendMail($mail,$subject,$body){
     $header  = "Content-type: text/html; charset=\"UTF-8\" \r\n";
-    $header .= "From: Não Responda <noreply@teofilootoni.mg.gov.br>" . "\r\n";
+    $header .= "From: Processo Seletivo Simplificado - Teófilo Otoni<noreply@teofilootoni.mg.gov.br>" . "\r\n";
     $header .= "Reply-To: Tecnologia da Informação <ti@teofilootoni.mg.gov.br>" . "\r\n" ;
     $header .= "MIME-Version: 1.0 \r\n";
     $header .= "Content-Transfer-Encoding: 8bit \r\n";
@@ -73,7 +79,7 @@ function buscapessoa($cpf){
     $sql -> bindValue(":cpf", $cpf);
     $sql -> execute();
     if ($sql->rowCount() > 0) {
-        header("Location: /");
+        header("Location: login.php?msn=CPF já Cadastrado.");
         }else{
         $_SESSION['cpf'] = $cpf;
         header("Location: formulario_pessoa.php");
@@ -83,9 +89,9 @@ function buscapessoa($cpf){
 function inserirpessoa($nome, $mae, $pai, $cpf, $rg, $data_nasc, $sexo, $email, $rua, $numero, $complemento, $bairro, $cidade, $uf, $senha){
     include "config.php";
     $sql = $pdo->prepare("INSERT INTO pessoa (nome, mae, pai, cpf, rg, datanasc, sexo, email, rua, numero, complemento,
-    bairro, cidade, uf, senha) 
+    bairro, cidade, uf, senha, insercao) 
         VALUES (:nome, :mae, :pai, :cpf, :rg, :datanasc, :sexo, :email, :rua, :numero, :complemento, :bairro, :cidade,
-        :uf, md5(:senha))");
+        :uf, md5(:senha), now())");
     $sql        -> bindValue(":nome",       $nome);
     $sql        -> bindValue(":mae",        $mae); 
     $sql        -> bindValue(":pai",        $pai); 
@@ -141,11 +147,14 @@ function buscasenha($cpf, $email){
          $mail= $email;
          $subject="Vaga do Processo Seletivo atualizada";
          $body = "<h3>Prezado!</h3>
-         <p>Foi realizada a atualização da sua senha para:</p>
+         <p>Segue abaixo a sua nova senha. Para altera-la logue no sistema e clique em Alterar Senha.</p>
          <p>".$senha."</p>
-         <p>Atenciosamente - CPD - PMTO</p>";
+         <p>Gentileza não responder a esse email.</p>
+         <p>Processo Seletivo 2018.</p>";
          sendMail($mail,$subject,$body);
-        header("Location: index.php");
+        header("Location: login.php?msn=Foi encaminhada nova senha para seu email!");
+    }else{
+        header("Location: login.php?msn=Usuário não existe.");
     }
 
 }
@@ -171,4 +180,12 @@ function updatepessoa($id, $nome, $mae, $pai, $rg, $data_nasc, $sexo, $email, $r
     $sql        -> bindValue(":uf",         $uf);   
     $sql->execute();
     header("Location: index.php");
+}
+
+function atendimento($id_cargo, $id_pessoa){
+    include "config.php";
+    $sql = $pdo->prepare("INSERT INTO atendimento (id_cargo, id_pessoa) VALUES (:id_cargo, :id_pessoa)");
+    $sql ->bindValue(":id_cargo", $id_cargo);
+    $sql ->bindValue(":id_pessoa", $id_pessoa); 
+    $sql ->execute();  
 }

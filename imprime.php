@@ -30,12 +30,14 @@ if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
  <body>
   <div class="container">
       <br><br>
-      <h2 align="center">Prefeitura Municipal de Teófilo Otoni</h2>
+      <h2 align="center"><img src="img/logo.png"></h2>
+      <hr>
       <h3 align="center">Processo Seletivo Simplicado - 2018</h3><br>
       <p align="center"><label><?php echo $_SESSION['nome']?></label></p><br>
       <p>Cadastro realizado para o seguinte cargo:</p>
       <p><label><?php echo $_SESSION['vaga'];?></label></p>
-      <p>O candidato deverá verificar a data e horário, para apresentação de documentos no site <a href="http://www.teofilootoni.mg.gov.br"> da Prefeitura Municipal de Teófilo Otoni</a></p>
+      <hr>
+      <p><b>Obs:</b> O candidato deverá verificar a data e horário para apresentação dos documentos no site <a href="http://www.teofilootoni.mg.gov.br"> da Prefeitura Municipal de Teófilo Otoni</a>, no dia que está previsto no edital.</p>
   </div>
   <div class="hidden-print container">
    <p>
